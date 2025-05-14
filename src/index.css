@@ -66,3 +66,27 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+:root {
+  --primary-color: #1e3a8a; /* Темно-синій */
+  --secondary-color: #dc2626; /* Червоний для акцентів */
+  --bg-dark: #0f172a; /* Темний фон */
+  --text-light: #f1f5f9; /* Світлий текст */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, var(--bg-dark), #1e293b);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
