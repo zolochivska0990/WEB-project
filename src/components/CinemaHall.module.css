@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 24px;
-  background: #1e293b;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -30,7 +30,7 @@
 .seat {
   width: 40px;
   height: 40px;
-  background: #22c55e; /* Зелені для вільних */
+  background: #22c55e;
   border: none;
   border-radius: 8px;
   color: #f1f5f9;
@@ -45,11 +45,11 @@
 }
 
 .selected {
-  background: #3b82f6; /* Сині для вибраних */
+  background: #ff1493; /* Неоновий рожевий для вибраних */
 }
 
 .selected:hover {
-  background: #2563eb;
+  background: #ff69b4;
 }
 
 .selectedSeats {
@@ -61,4 +61,17 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   color: #f1f5f9;
+  margin-bottom: 12px;
+}
+
+.seatList {
+  list-style: none;
+  padding: 0;
+}
+
+.seatList li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #f1f5f9;
+  margin: 4px 0;
 }

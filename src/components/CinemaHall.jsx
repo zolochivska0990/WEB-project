@@ -15,6 +15,11 @@ const CinemaHall = () => {
     );
   };
 
+  const formatSeatLabel = (seatId) => {
+    const [row, seat] = seatId.split('-').map(Number);
+    return `Ряд ${row + 1}, Місце ${seat + 1}`;
+  };
+
   return (
     <div className={styles.hall}>
       <h3 className={styles.title}>Виберіть місця</h3>
@@ -38,7 +43,16 @@ const CinemaHall = () => {
         ))}
       </div>
       <div className={styles.selectedSeats}>
-        <p>Вибрані місця: {selectedSeats.length ? selectedSeats.join(', ') : 'Немає'}</p>
+        <p>Вибрані місця:</p>
+        {selectedSeats.length ? (
+          <ul className={styles.seatList}>
+            {selectedSeats.map((seatId) => (
+              <li key={seatId}>{formatSeatLabel(seatId)}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>Немає</p>
+        )}
       </div>
     </div>
   );

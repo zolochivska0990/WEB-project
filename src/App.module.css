@@ -1,18 +1,29 @@
 .app {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
 }
 
 .header {
   text-align: center;
   padding: 24px;
-  background: #1e3a8a;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон для контрасту */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.header h1 {
+.title {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #f1f5f9;
+  text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+  animation: neonPulse 1.5s infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+  }
+  to {
+    text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493, 0 0 40px #ff69b4;
+  }
 }

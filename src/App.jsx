@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.header}>
-          <h1>Кінотеатр</h1>
+          <h1 className={styles.title}>ZLOTOPLEX</h1>
         </header>
         <Routes>
           <Route path="/" element={<Home />} />

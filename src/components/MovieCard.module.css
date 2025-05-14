@@ -4,7 +4,7 @@
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%; /* Прибираємо обмеження, щоб картка займала доступний простір */
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -15,7 +15,7 @@
 
 .poster {
   width: 100%;
-  height: 400px; /* Збільшуємо висоту постера */
+  height: 400px;
   object-fit: cover;
 }
 
@@ -48,7 +48,7 @@
 
 .button {
   display: inline-block;
-  background: #dc2626;
+  background: #ff1493; /* Неоновий рожевий для кнопки */
   color: #f1f5f9;
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
@@ -58,5 +58,5 @@
 }
 
 .button:hover {
-  background: #b91c1c;
+  background: #ff69b4;
 }
