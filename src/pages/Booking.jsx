@@ -8,12 +8,6 @@ import styles from './Booking.module.css';
 
 const Booking = () => {
   const { id } = useParams();
-  console.log('Movies:', movies);
-
-  if (!movies) {
-    return <div className={styles.error}>Помилка: дані про фільми недоступні</div>;
-  }
-
   const movie = movies.find((m) => m.id === Number(id)) || null;
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [bookedSeats, setBookedSeats] = useState([]);
@@ -31,7 +25,6 @@ const Booking = () => {
   };
 
   const handleBookingSuccess = (booking) => {
-    console.log('Бронювання збережено:', booking);
     setBookedSeats((prev) => [...prev, ...booking.seats]);
     setSelectedSeats([]);
   };
@@ -42,17 +35,19 @@ const Booking = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Бронювання: {movie.title}</h2>
       <CinemaHall
         onSeatsSelected={handleSeatsSelected}
         bookedSeats={bookedSeats}
         selectedSeats={selectedSeats}
+        movieTitle={movie.title}
       />
-      <BookingForm
-        movieId={movie.id}
-        selectedSeats={selectedSeats}
-        onBookingSuccess={handleBookingSuccess}
-      />
+      {selectedSeats.length > 0 && (
+        <BookingForm
+          movieId={movie.id}
+          selectedSeats={selectedSeats}
+          onBookingSuccess={handleBookingSuccess}
+        />
+      )}
     </div>
   );
 };

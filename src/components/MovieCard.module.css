@@ -1,62 +1,88 @@
+.cardContainer {
+  width: 300px;
+  height: 450px;
+  margin: 15px;
+  flex-shrink: 0;
+}
+
 .card {
-  background: linear-gradient(145deg, #1e293b, #334155);
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%;
-  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.poster {
+.front img {
   width: 100%;
-  height: 400px;
+  height: 100%;
   object-fit: cover;
 }
 
-.content {
+.back {
+  background: #1e293b;
+  color: #f1f5f9;
   padding: 20px;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
 }
 
 .title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #f1f5f9;
+  font-size: 1.5rem;
   margin-bottom: 10px;
+  color: #ff69b4;
 }
 
 .description {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  color: #cbd5e1;
-  margin-bottom: 14px;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
 }
 
 .info {
-  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
-  color: #94a3b8;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.button {
-  display: inline-block;
-  background: #ff1493; /* Неоновий рожевий для кнопки */
-  color: #f1f5f9;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+.showtimes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
 }
 
-.button:hover {
+.showtime {
   background: #ff69b4;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.showtime:hover {
+  background: #ff1493;
+  transform: scale(1.05);
 }

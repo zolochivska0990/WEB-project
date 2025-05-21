@@ -18,7 +18,7 @@ export const movies = [
     description: "Продовження епічної саги про Пола Атрійдеса на пустельній планеті.",
     genre: "Фантастика",
     poster: dunePoster,
-    showtime: "2025-05-15 18:00",
+    showtimes: ["2025-05-15 18:00", "2025-05-15 21:00"],
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ export const movies = [
     description: "Джейк Саллі та його сім'я борються за виживання на Пандорі.",
     genre: "Фантастика",
     poster: avatarPoster,
-    showtime: "2025-05-15 20:00",
+    showtimes: ["2025-05-10 19:00", "2025-05-1 20:00"],
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const movies = [
     description: "Герої об'єднуються, щоб зупинити Таноса та врятувати всесвіт.",
     genre: "Екшн",
     poster: avengersPoster,
-    showtime: "2025-05-15 16:00",
+    showtimes: ["2025-05-19 18:20", "2025-05-20 21:40"],
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const movies = [
     description: "Піт Мітчелл повертається, щоб тренувати нове покоління пілотів.",
     genre: "Екшн",
     poster: topGunPoster,
-    showtime: "2025-05-15 14:00",
+    showtimes: ["2025-05-10 18:00", "2025-05-25 21:00"],
   },
   {
     id: 5,
@@ -50,7 +50,8 @@ export const movies = [
     description: "Історія створення атомної бомби під час Другої світової війни.",
     genre: "Драма",
     poster: oppenheimerPoster,
-    showtime: "2025-05-15 19:00",
+    showtimes: ["2025-05-7 14:00", "2025-05-23 23:00"],
+
   },
   {
     id: 6,
@@ -58,7 +59,7 @@ export const movies = [
     description: "Пригоди Барбі у реальному світі, повні гумору та самопізнання.",
     genre: "Комедія",
     poster: barbiePoster,
-    showtime: "2025-05-15 17:00",
+   showtimes: ["2025-05-1 17:00", "2025-05-5 22:00"],
   },
   {
     id: 7,
@@ -66,7 +67,7 @@ export const movies = [
     description: "Подорож у космос у пошуках нового дому для людства.",
     genre: "Фантастика",
     poster: interstellarPoster,
-    showtime: "2025-05-16 18:00",
+    showtimes: ["2025-06-11 11:00", "2025-05-19 13:00"],
   },
   {
     id: 8,
@@ -74,7 +75,7 @@ export const movies = [
     description: "Епічна історія про помсту та честь у Стародавньому Римі.",
     genre: "Історичний",
     poster: gladiatorPoster,
-    showtime: "2025-05-16 20:00",
+  showtimes: ["2025-09-17 15:00", "2025-05-15 20:00"],
   },
   {
     id: 9,
@@ -82,7 +83,7 @@ export const movies = [
     description: "Битва між людиною та машинами у віртуальному світі.",
     genre: "Наукова фантастика",
     poster: matrixPoster,
-    showtime: "2025-05-16 16:00",
+    showtimes: ["2025-05-1 10:00", "2025-05-4 12:00"],
   },
   {
     id: 10,
@@ -90,7 +91,7 @@ export const movies = [
     description: "Нові пригоди Домініка Торетто та його команди.",
     genre: "Екшн",
     poster: fastFuriousPoster,
-    showtime: "2025-05-16 14:00",
+    showtimes: ["2025-05-19 18:00", "2025-05-25 14:00"],
   },
   {
     id: 11,
@@ -98,7 +99,7 @@ export const movies = [
     description: "Початок магічних пригод юного чаклуна Гаррі.",
     genre: "Фентезі",
     poster: harryPotterPoster,
-    showtime: "2025-05-16 19:00",
+   showtimes: ["2025-05-3 19:00", "2025-05-7 22:00"],
   },
   {
     id: 12,
@@ -106,6 +107,6 @@ export const movies = [
     description: "Трагічна історія створення легендарного злочинця.",
     genre: "Триллер",
     poster: jokerPoster,
-    showtime: "2025-05-16 17:00",
+    showtimes: ["2025-05-11 19:00", "2025-05-5 23:00"],
   },
 ];

@@ -1,47 +1,19 @@
 .container {
-  max-width: 1400px; 
-  margin: 0 auto;
-  padding: 24px;
+  padding: 20px;
 }
 
 .searchInput {
   width: 100%;
-  max-width: 500px;
-  padding: 12px;
-  margin: 0 auto 24px;
-  display: block;
-  background: rgba(255, 255, 255, 0.1); 
-  border: 1px solid #ff69b4;
-  border-radius: 8px;
-  color: #f1f5f9;
-  font-family: 'Poppins', sans-serif;
+  padding: 10px;
   font-size: 1rem;
-}
-
-.searchInput::placeholder {
-  color: #f1f5f9;
-}
-
-.searchInput:focus {
-  outline: none;
-  border-color: #ff1493;
-  box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.2);
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 24px;
-}
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr; 
-  }
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
 }
