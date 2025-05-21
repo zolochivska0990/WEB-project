@@ -40,7 +40,7 @@
   transition: background 0.3s ease;
 }
 
-.seat:hover:not(.booked) {
+.seat:hover {
   background: #16a34a;
 }
 
@@ -53,8 +53,12 @@
 }
 
 .booked {
-  background: #ef4444; /* Червоні для заброньованих */
+  background: #f44336; /* Червоний для заброньованих */
   cursor: not-allowed;
+}
+
+.available {
+  background: #22c55e; /* Зелені для вільних */
 }
 
 .selectedSeats {
@@ -68,23 +72,12 @@
   color: #f1f5f9;
 }
 
-.bookButton {
-  margin-top: 24px;
-  text-align: center;
-}
-
-.submitButton {
-  background: #dc2626;
-  color: #f1f5f9;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.submitButton:hover {
-  background: #b91c1c;
+@media (max-width: 600px) {
+  .hall {
+    padding: 16px;
+  }
+  .seat {
+    width: 30px;
+    height: 30px;
+  }
 }

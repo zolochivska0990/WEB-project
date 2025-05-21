@@ -1,28 +1,18 @@
-import { useState, useEffect } from 'react';
-import { BookingService } from '../services/BookingService';
+import { useState } from 'react';
 import styles from './CinemaHall.module.css';
 
-const CinemaHall = ({ movieId, onSeatsBooked }) => {
+const CinemaHall = ({ onSeatsSelected, bookedSeats = [], selectedSeats = [] }) => {
   const rows = 5;
   const seatsPerRow = 8;
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const [bookedSeats, setBookedSeats] = useState([]);
-
-  useEffect(() => {
-    // Завантажуємо заброньовані місця при завантаженні сторінки
-    const bookings = BookingService.getBookingsForMovie(movieId);
-    const booked = bookings.flatMap((booking) => booking.seats);
-    setBookedSeats(booked);
-  }, [movieId]);
 
   const toggleSeat = (row, seat) => {
     const seatId = `${row}-${seat}`;
-    if (bookedSeats.includes(seatId)) return; // Не дозволяємо вибирати заброньовані місця
-    setSelectedSeats((prev) =>
-      prev.includes(seatId)
-        ? prev.filter((id) => id !== seatId)
-        : [...prev, seatId]
-    );
+    if (!bookedSeats.includes(seatId)) {
+      const newSelected = selectedSeats.includes(seatId)
+        ? selectedSeats.filter((id) => id !== seatId)
+        : [...selectedSeats, seatId];
+      onSeatsSelected(newSelected);
+    }
   };
 
   return (
@@ -33,14 +23,14 @@ const CinemaHall = ({ movieId, onSeatsBooked }) => {
           <div key={row} className={styles.row}>
             {Array.from({ length: seatsPerRow }).map((_, seat) => {
               const seatId = `${row}-${seat}`;
-              const isSelected = selectedSeats.includes(seatId);
               const isBooked = bookedSeats.includes(seatId);
+              const isSelected = selectedSeats.includes(seatId);
               return (
                 <button
                   key={seatId}
-                  className={`${styles.seat} ${isSelected ? styles.selected : ''} ${
-                    isBooked ? styles.booked : ''
-                  }`}
+                  className={`${styles.seat} ${isBooked ? styles.booked : ''} ${
+                    isSelected ? styles.selected : ''
+                  } ${!isBooked && !isSelected ? styles.available : ''}`}
                   onClick={() => toggleSeat(row, seat)}
                   disabled={isBooked}
                 >
@@ -54,13 +44,6 @@ const CinemaHall = ({ movieId, onSeatsBooked }) => {
       <div className={styles.selectedSeats}>
         <p>Вибрані місця: {selectedSeats.length ? selectedSeats.join(', ') : 'Немає'}</p>
       </div>
-      {onSeatsBooked && (
-        <div className={styles.bookButton}>
-          <button onClick={() => onSeatsBooked(selectedSeats)} className={styles.submitButton}>
-            Підтвердити вибір
-          </button>
-        </div>
-      )}
     </div>
   );
 };

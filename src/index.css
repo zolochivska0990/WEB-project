@@ -1,6 +1,6 @@
 :root {
   --primary-color: #1e3a8a;
-  --secondary-color: #ff1493; /* Неоновий рожевий */
+  --secondary-color: #ff1493; 
   --bg-dark: #0f172a;
   --text-light: #f1f5f9;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ff1493, #ff69b4); /* Неоновий рожевий градієнт */
+  background: linear-gradient(135deg, #ff1493, #ff69b4); 
   color: var(--text-light);
   line-height: 1.6;
 }

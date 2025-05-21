@@ -1,93 +1,73 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './BookingForm.module.css';
+import BookingService from '../services/BookingService';
 
 const BookingForm = ({ movieId, selectedSeats, onBookingSuccess }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-  });
-  const [errors, setErrors] = useState({});
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
   const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Ім'я є обов'язковим";
-    if (!formData.phone.trim()) newErrors.phone = "Телефон є обов'язковим";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email є обов'язковим";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email має бути у правильному форматі";
+    if (!name || !phone || !email) {
+      setError('Усі поля є обов’язковими!');
+      return false;
     }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      setError('Неправильний формат email!');
+      return false;
+    }
+    if (!/^\+?\d{10,12}$/.test(phone)) {
+      setError('Неправильний формат телефону (10-12 цифр, опціонально з +)!');
+      return false;
+    }
+    setError('');
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm() && selectedSeats.length > 0) {
-      onBookingSuccess(formData);
-      toast.success('Бронювання успішно збережено!', {
-        position: 'top-right',
-      });
-      setFormData({ name: '', phone: '', email: '' });
+      const booking = { movieId, name, phone, email, seats: selectedSeats, timestamp: new Date().toISOString() };
+      BookingService.saveBooking(booking);
+      toast.success(`Бронювання для ${name} на ${selectedSeats.join(', ')} успішне!`);
+      onBookingSuccess(booking);
+      setName('');
+      setPhone('');
+      setEmail('');
     } else if (selectedSeats.length === 0) {
-      toast.error('Виберіть хоча б одне місце!', {
-        position: 'top-right',
-      });
+      setError('Оберіть хоча б одне місце!');
     }
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h3 className={styles.title}>Дані для бронювання</h3>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.field}>
-          <label htmlFor="name">Ім'я</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={styles.input}
-          />
-          {errors.name && <p className={styles.error}>{errors.name}</p>}
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="phone">Телефон</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={styles.input}
-          />
-          {errors.phone && <p className={styles.error}>{errors.phone}</p>}
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={styles.input}
-          />
-          {errors.email && <p className={styles.error}>{errors.email}</p>}
-        </div>
-        <button type="submit" className={styles.submitButton}>
-          Забронювати
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      {error && <div className={styles.error}>{error}</div>}
+      <input
+        type="text"
+        placeholder="Ваше ім’я"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className={styles.input}
+      />
+      <input
+        type="tel"
+        placeholder="Телефон (наприклад, +380xxxxxxxxx)"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        className={styles.input}
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className={styles.input}
+      />
+      <button type="submit" className={styles.button}>Забронювати</button>
+    </form>
   );
 };
 

@@ -1,5 +1,5 @@
 .container {
-  max-width: 1400px;
+  max-width: 1400px; 
   margin: 0 auto;
   padding: 24px;
 }
@@ -10,7 +10,7 @@
   padding: 12px;
   margin: 0 auto 24px;
   display: block;
-  background: rgba(255, 255, 255, 0.1); /* Напівпрозорий фон для контрасту */
+  background: rgba(255, 255, 255, 0.1); 
   border: 1px solid #ff69b4;
   border-radius: 8px;
   color: #f1f5f9;
@@ -30,18 +30,18 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Строго 3 колонки */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 24px;
 }
 
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки на середніх екранах */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr; /* 1 колонка на малих екранах */
+    grid-template-columns: 1fr; 
   }
 }

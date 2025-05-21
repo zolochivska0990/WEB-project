@@ -1,19 +1,14 @@
-const BOOKINGS_KEY = 'cinema_bookings';
+class BookingService {
+  static saveBooking(booking) {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    bookings.push(booking);
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+  }
 
-export const BookingService = {
-  // Отримати заброньовані місця для фільму за ID
-  getBookingsForMovie(movieId) {
-    const bookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || {};
-    return bookings[movieId] || [];
-  },
+  static getBookingsByMovieId(movieId) {
+    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+    return bookings.filter((b) => b.movieId === movieId);
+  }
+}
 
-  // Зберегти бронювання
-  saveBooking(movieId, seats, userData) {
-    const bookings = JSON.parse(localStorage.getItem(BOOKINGS_KEY)) || {};
-    if (!bookings[movieId]) {
-      bookings[movieId] = [];
-    }
-    bookings[movieId].push({ seats, userData });
-    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
-  },
-};
+export default BookingService;
