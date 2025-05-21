@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий фон */
+  background: #1e293b;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -30,7 +30,7 @@
 .seat {
   width: 40px;
   height: 40px;
-  background: #22c55e;
+  background: #22c55e; /* Зелені для вільних */
   border: none;
   border-radius: 8px;
   color: #f1f5f9;
@@ -40,16 +40,21 @@
   transition: background 0.3s ease;
 }
 
-.seat:hover {
+.seat:hover:not(.booked) {
   background: #16a34a;
 }
 
 .selected {
-  background: #ff1493; /* Неоновий рожевий для вибраних */
+  background: #3b82f6; /* Сині для вибраних */
 }
 
 .selected:hover {
-  background: #ff69b4;
+  background: #2563eb;
+}
+
+.booked {
+  background: #ef4444; /* Червоні для заброньованих */
+  cursor: not-allowed;
 }
 
 .selectedSeats {
@@ -61,17 +66,25 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   color: #f1f5f9;
-  margin-bottom: 12px;
 }
 
-.seatList {
-  list-style: none;
-  padding: 0;
+.bookButton {
+  margin-top: 24px;
+  text-align: center;
 }
 
-.seatList li {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+.submitButton {
+  background: #dc2626;
   color: #f1f5f9;
-  margin: 4px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submitButton:hover {
+  background: #b91c1c;
 }
